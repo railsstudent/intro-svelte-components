@@ -1,5 +1,7 @@
 <script lang="ts">
-    import CoffeePlan from '$lib/coffee-plan.svelte';
+	import CoffeePlan from '$lib/coffee-plan.svelte';
+
+	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
 </script>
 
 <div class="content">
@@ -8,26 +10,8 @@
 	<h2 class="subtitle">We travel the world to source the very best single origin coffee for you</h2>
 
 	<div class="plans">
-        <CoffeePlan />
-        <CoffeePlan />
-        <CoffeePlan />
-        <CoffeePlan />
-        <!-- <div class="plan">
-			<div class="description">
-				<span class="title"> The Single </span>
-			</div>
-		</div> -->
-
-		<!-- <div class="plan">
-			<div class="description">
-				<span class="title"> The Curious </span>
-			</div>
-		</div> -->
-
-		<!-- <div class="plan">
-			<div class="description">
-				<span class="title"> The Addict </span>
-			</div>
-		</div> -->
+		{#each plans as plan (plan)}
+			<CoffeePlan name={plan} />
+		{/each}
 	</div>
 </div>

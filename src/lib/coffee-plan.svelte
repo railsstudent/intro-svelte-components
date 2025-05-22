@@ -1,8 +1,12 @@
 <script lang="ts">
-	let { name = 'Default Plan' } = $props();
+	let { name = 'Default Plan', selectedPlan, selected } = $props();
+	
+	const handleSelectPlan = () => {
+		selectedPlan(name)
+	}
 </script>
 
-<div class="plan">
+<div onclick={handleSelectPlan} class={['plan', selected && 'active-plan']}>
 	<div class="description">
 		<span class="title"> {name} </span>
 	</div>

@@ -1,7 +1,5 @@
 <script lang="ts">
 	import PlanPicker from '$lib/plan-picker.svelte';
-
-	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
 </script>
 
 <div class="content">

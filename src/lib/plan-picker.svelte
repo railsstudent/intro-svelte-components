@@ -1,16 +1,16 @@
 <script lang="ts">
-import CoffeePlan from './coffee-plan.svelte';
-const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
+	import CoffeePlan from './coffee-plan.svelte';
+	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
 
-let selectedCoffeePlan = $state('')
-const selectedPlan = (name: string) => {
-    selectedCoffeePlan = name;
-}
+	let selectedCoffeePlan = $state('');
+	const selectedPlan = (name: string) => {
+		selectedCoffeePlan = name;
+	};
 </script>
 
 <div class="plans">
-    { selectedCoffeePlan }
-    {#each plans as plan(plan)}
-        <CoffeePlan name={plan} {selectedPlan} selected={selectedCoffeePlan===plan} />
-    {/each}
-</div> 
+	{selectedCoffeePlan}
+	{#each plans as plan (plan)}
+		<CoffeePlan name={plan} {selectedPlan} selected={selectedCoffeePlan === plan} />
+	{/each}
+</div>

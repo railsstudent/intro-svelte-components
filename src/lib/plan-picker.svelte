@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CoffeePlan from './coffee-plan.svelte';
+	import AddCoffeePlan from './add-coffee-plan.svelte';
 	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
 
 	let selectedCoffeePlan = $state('');
@@ -9,6 +10,7 @@
 </script>
 
 <div class="plans">
+	<AddCoffeePlan addCoffeePlan={(plan) => plans.push(plan)}  />
 	{selectedCoffeePlan}
 	{#each plans as plan (plan)}
 		<CoffeePlan name={plan} {selectedPlan} selected={selectedCoffeePlan === plan} />

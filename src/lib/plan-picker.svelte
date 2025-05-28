@@ -4,9 +4,7 @@
 	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
 
 	let selectedCoffeePlan = $state('');
-	const selectedPlan = (name: string) => {
-		selectedCoffeePlan = name;
-	};
+	const selectedPlan = (name: string) => selectedCoffeePlan = name;
 </script>
 
 <div class="plans">

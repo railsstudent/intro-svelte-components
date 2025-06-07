@@ -18,15 +18,11 @@
 	</AddCoffeePlan>
 	{selectedCoffeePlan}
 
-	{#snippet selectedPlanIcons(name: string)}
+	{#snippet selectedPlanIcons(names: string[])}
 		<div>
-			{#if name.startsWith('The')}
-				<Icon icon="ic:outline-coffee" width="48" height="48" />
-				<Icon icon="ic:outline-coffee-maker" width="48" height="48" />
-			{:else}
-				<Icon icon="material-symbols:emoji-food-beverage-outline" width="48" height="48" />
-				<Icon icon="material-symbols:fastfood-outline" width="48" height="48" />
-			{/if}
+			{#each names as name (name)}
+				<Icon icon={name} width="48" height="48" />
+			{/each}
 		</div>
 	{/snippet}
 

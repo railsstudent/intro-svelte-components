@@ -8,6 +8,12 @@
 	let selectedCoffeePlan = $state('');
 	const selectedPlan = (name: string) => (selectedCoffeePlan = name);
 	const isSelected = (plan: string) => selectedCoffeePlan === plan;
+
+	const iconsNames = $derived.by(() => {
+		return selectedCoffeePlan.startsWith('The')
+			? ['ic:outline-coffee', 'ic:outline-coffee-maker']
+			: ['ic:outline-emoji-food-beverage', 'ic:outline-fastfood'];
+	});
 </script>
 
 <div class="plans">
@@ -18,16 +24,43 @@
 	</AddCoffeePlan>
 	{selectedCoffeePlan}
 
-	{#snippet selectedPlanIcons(names: string[])}
-		<div>
-			{#each names as name (name)}
+	{#snippet selectedPlanIcons()}
+		<div class="coffee">
+			{#each iconsNames as name (name)}
 				<Icon icon={name} width="48" height="48" />
+			{/each}	
+		</div>
+	{/snippet}
+
+	{#snippet selectedPlanBeverageIcons()}
+		<div class="beverage">
+			{#each iconsNames as name (name)}
+				<Icon icon={name} width="42" height="42" color="blue" />
 			{/each}
 		</div>
 	{/snippet}
 
 	{#each plans as plan (plan)}
-		<CoffeePlan name={plan} {selectedPlan} selected={isSelected(plan)} 
-			selectedPlanIcons={isSelected(plan) ? selectedPlanIcons : undefined } />
+		{#if isSelected(plan)}
+			<CoffeePlan name={plan} {selectedPlan} selected={isSelected(plan)} 
+			selectedPlanBeverageIcons={!plan.startsWith('The') ? selectedPlanBeverageIcons : undefined}
+			selectedPlanIcons={plan.startsWith('The') ? selectedPlanIcons : undefined} />
+		{:else}
+			<CoffeePlan name={plan} {selectedPlan} selected={isSelected(plan)} />
+		{/if}
 	{/each}
 </div>
+
+<style>
+	.coffee {
+		display: flex; 
+		align-items: center;
+	}
+
+	.beverage {
+		display: flex; 
+		flex-direction: column; 
+		padding: 0.25rem;
+	}
+
+</style>

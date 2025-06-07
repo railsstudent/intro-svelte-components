@@ -8,12 +8,6 @@
 	let selectedCoffeePlan = $state('');
 	const selectedPlan = (name: string) => (selectedCoffeePlan = name);
 	const isSelected = (plan: string) => selectedCoffeePlan === plan;
-
-	const iconsNames = $derived.by(() => {
-		return selectedCoffeePlan.startsWith('The')
-			? ['ic:outline-coffee', 'ic:outline-coffee-maker']
-			: ['ic:outline-emoji-food-beverage', 'ic:outline-fastfood'];
-	});
 </script>
 
 <div class="plans">
@@ -26,7 +20,7 @@
 
 	{#snippet selectedPlanIcons()}
 		<div class="coffee">
-			{#each iconsNames as name (name)}
+			{#each ['ic:outline-coffee', 'ic:outline-coffee-maker'] as name (name)}
 				<Icon icon={name} width="48" height="48" />
 			{/each}	
 		</div>
@@ -34,7 +28,7 @@
 
 	{#snippet selectedPlanBeverageIcons()}
 		<div class="beverage">
-			{#each iconsNames as name (name)}
+			{#each ['ic:outline-emoji-food-beverage', 'ic:outline-fastfood'] as name (name)}
 				<Icon icon={name} width="42" height="42" color="blue" />
 			{/each}
 		</div>

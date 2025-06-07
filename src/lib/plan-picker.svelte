@@ -3,7 +3,7 @@
 
 	import CoffeePlan from './coffee-plan.svelte';
 	import AddCoffeePlan from './add-coffee-plan.svelte';
-	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker']);
+	const plans = $state(['The Single', 'The Curious', 'The Addict', 'The Hacker', 'Vibe Coder']);
 
 	let selectedCoffeePlan = $state('');
 	const selectedPlan = (name: string) => (selectedCoffeePlan = name);
